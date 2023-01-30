@@ -15,4 +15,7 @@ Route::get('/home', function () {
 Route::group(['prefix'=>'master'],function(){
 
     Route::resource('category',CategoryController::class);
+    Route::resource('product',ProductController::class);
+    Route::resource('user' ,MemberController::class);
+
 });
