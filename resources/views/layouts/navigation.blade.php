@@ -13,6 +13,7 @@
                     class="mdi mdi-table-merge-cells"></i><span>Master Data</span></a>
             <ul class="sub-menu" aria-expanded="false">
                 <li><a href="{{ route('category.index') }}">Category</a></li>
+                <li><a href="{{ route('product.index') }}">Produk</a></li>
                 <li><a href="tables-datatables.html">Data Tables</a></li>
             </ul>
         </li>
