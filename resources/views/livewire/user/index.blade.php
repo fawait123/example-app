@@ -16,8 +16,11 @@
                             <thead>
                                 <tr>
                                     <th width="10%">NO</th>
-                                    <th>Name</th>
-                                    <th>Action</th>
+                                    <th>Nama</th>
+                                    <th>Email</th>
+                                    <th>Telp</th>
+                                    <th>Jenis Kelamin</th>
+                                    <th>Role</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -26,15 +29,18 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->name }}</td>
+                                            <td>{{ $item->user->email }}</td>
+                                            <td>{{ $item->telp }}</td>
+                                            <td>{{ $item->gender }}</td>
+                                            <td>{{ $item->role }}</td>
                                             <td>
-                                                <a href="{{ route('category.edit', $item->id) }}"
-                                                    class="text-primary"><i class="mdi mdi-lead-pencil"></i></a>
+                                                <a href="{{ route('member.edit', $item->id) }}" class="text-primary"><i
+                                                        class="mdi mdi-lead-pencil"></i></a>
                                                 <a href="#" data-toggle="modal"
                                                     data-target="#exampleModal{{ $loop->iteration }}"
                                                     class="text-danger"><i class="mdi mdi-trash-can-outline"></i></a>
                                             </td>
                                         </tr>
-
                                         <div class="modal fade" id="exampleModal{{ $loop->iteration }}" tabindex="-1"
                                             role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">

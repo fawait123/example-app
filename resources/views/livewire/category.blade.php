@@ -12,7 +12,7 @@
                     <br>
                     <br>
                     <div class="table-responsive">
-                        <table class="table table-bordered table-striped">
+                        <table class="table-bordered table-striped table">
                             <thead>
                                 <tr>
                                     <th width="10%">NO</th>
@@ -25,6 +25,7 @@
                                     @foreach ($query as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $item-> }}</td>
                                             <td>{{ $item->name }}</td>
                                             <td>
                                                 <a href="{{ route('category.edit', $item->id) }}"

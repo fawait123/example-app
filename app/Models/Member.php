@@ -9,5 +9,18 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Member extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $guarded = ['id'];
+    protected $fillable = [
+        'user_id',
+        'name',
+        'role',
+        'telp',
+        'gender',
+        'foto'
+    ];
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
