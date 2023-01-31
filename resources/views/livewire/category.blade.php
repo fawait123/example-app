@@ -25,7 +25,6 @@
                                     @foreach ($query as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item-> }}</td>
                                             <td>{{ $item->name }}</td>
                                             <td>
                                                 <a href="{{ route('category.edit', $item->id) }}"

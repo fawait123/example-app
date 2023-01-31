@@ -21,6 +21,7 @@
                                     <th>Telp</th>
                                     <th>Jenis Kelamin</th>
                                     <th>Role</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -45,7 +46,7 @@
                                             role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
-                                                    <form action="{{ route('category.destroy', $item->id) }}"
+                                                    <form action="{{ route('member.destroy', $item->id) }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('delete')

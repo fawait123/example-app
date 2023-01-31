@@ -60,8 +60,10 @@
                             @enderror
 
                             <label for="password">Password</label>
-                            <p class="text-warning"><b>Perhatian!! </b>Kosongkan Jika <b> password</b> Tidak akan dirubah
-                            </p>
+                            @isset($id)
+                                <p class="text-warning"><b>Perhatian!! </b>Kosongkan Jika <b> password</b> Tidak akan dirubah
+                                </p>
+                            @endisset
                             <input type="text" name="password" value=""
                                 class="form-control @error('password') is-invalid @enderror">
                             @error('name')
