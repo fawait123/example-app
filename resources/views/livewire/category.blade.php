@@ -12,7 +12,7 @@
                     <br>
                     <br>
                     <div class="table-responsive">
-                        <table class="table table-bordered table-striped">
+                        <table class="table-bordered table-striped table">
                             <thead>
                                 <tr>
                                     <th width="10%">NO</th>

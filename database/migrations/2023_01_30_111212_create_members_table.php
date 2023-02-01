@@ -15,12 +15,13 @@ class CreateMembersTable extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('member_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('name', 100);
             $table->string('role', 20);
-            $table->string('email', 100);
+            // $table->string('email', 100);
             $table->string('telp', 20);
             $table->string('gender', 20);
+            $table->string('foto', 100);
             $table->timestamps('');
             $table->timestamp('deleted_at')->nullable();
         });
