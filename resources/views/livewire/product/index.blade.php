@@ -17,6 +17,13 @@
                                 <tr>
                                     <th width="10%">NO</th>
                                     <th>Name</th>
+                                    <th>Foto</th>
+                                    <th>QR Code</th>
+                                    <th>deskripsi</th>
+                                    <th>Harga</th>
+                                    <th>Harga Promo</th>
+                                    <th>Id Kategori</th>
+                                    <th>Stok</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -25,9 +32,16 @@
                                     @foreach ($query as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->nama }}</td>
+                                            <td>{{ $item->name }}</td>
+                                            <td><img src="{{ Storage::url('public/foto/').$item->foto }}" class="rounded" width="50" height="50" alt=""></td>
+                                            <td>{!! QrCode::size(50)->generate( $item->qrcode ); !!}</td>
+                                            <td>{{ $item->deskripsi }}</td>
+                                            <td>{{ $item->harga }}</td>
+                                            <td>{{ $item->harga_promo }}</td>
+                                            <td>{{ $item->category_id }}</td>
+                                            <td>{{ $item->stok }}</td>
                                             <td>
-                                                <a href="{{ route('category.edit', $item->id) }}"
+                                                <a href="{{ route('product.edit', $item->id) }}"
                                                     class="text-primary"><i class="mdi mdi-lead-pencil"></i></a>
                                                 <a href="#" data-toggle="modal"
                                                     data-target="#exampleModal{{ $loop->iteration }}"
@@ -35,11 +49,12 @@
                                             </td>
                                         </tr>
 
+
                                         <div class="modal fade" id="exampleModal{{ $loop->iteration }}" tabindex="-1"
                                             role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
-                                                    <form action="{{ route('category.destroy', $item->id) }}"
+                                                    <form action="{{ route('product.destroy', $item->id) }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('delete')
