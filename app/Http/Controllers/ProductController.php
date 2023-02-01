@@ -28,7 +28,7 @@ class ProductController extends Controller
     public function create()
     {
         $category = Category::get();
-        return view('pages.product.form',compact('category'));
+        return view('pages.product.form', compact('category'));
     }
 
     /**
@@ -39,25 +39,25 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $validate= $request->validate([
-            'name'           =>'required',
-            'foto'           =>'required|image|mimes:jpeg,png,jpg,gif,svg',
-            'qrcode'         =>'required',
-            'deskripsi'      =>'required',
-            'harga'          =>'required',
-            'harga_promo'    =>'required',
-            'category_id'    =>'required',
-            'stok'           =>'required',
+        $validate = $request->validate([
+            'name'           => 'required',
+            'foto'           => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'qrcode'         => 'required',
+            'deskripsi'      => 'required',
+            'harga'          => 'required',
+            'harga_promo'    => 'required',
+            'category_id'    => 'required',
+            'stok'           => 'required',
 
         ]);
         $foto = $request->file('foto');
         $filename = $foto->hashName();
-        $validate['foto']=$filename;
+        $validate['foto'] = $filename;
         $foto->storeAs('public/foto', $foto->hashName());
 
 
         product::create($validate);
-        return redirect()->route('product.index')->with(['message'=>'Produk has been created']);
+        return redirect()->route('product.index')->with(['message' => 'Produk has been created']);
     }
 
     /**
@@ -82,7 +82,7 @@ class ProductController extends Controller
 
         $category = Category::get();
         $id = $product->id;
-        return view('pages.product.form', compact('product','id','category'));
+        return view('pages.product.form', compact('product', 'id', 'category'));
     }
 
     /**
@@ -95,7 +95,7 @@ class ProductController extends Controller
     public function update(Request $request, product $product)
     {
         $product->update($request->all());
-        return redirect()->route('product.index')->with(['message'=>'product has ben created']);
+        return redirect()->route('product.index')->with(['message' => 'product has ben created']);
     }
 
     /**
@@ -107,6 +107,6 @@ class ProductController extends Controller
     public function destroy(product $product)
     {
         $product->delete();
-        return redirect()->route('product.index')->with(['message'=>'Product has been deleted']);
+        return redirect()->route('product.index')->with(['message' => 'Product has been deleted']);
     }
 }
