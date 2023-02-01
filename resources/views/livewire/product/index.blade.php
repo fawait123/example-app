@@ -22,7 +22,7 @@
                                     <th>deskripsi</th>
                                     <th>Harga</th>
                                     <th>Harga Promo</th>
-                                    <th>Id Kategori</th>
+                                    <th>Kategori</th>
                                     <th>Stok</th>
                                     <th>Action</th>
                                 </tr>

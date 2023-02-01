@@ -49,6 +49,17 @@ class ProductController extends Controller
             'category_id'    =>'required',
             'stok'           =>'required',
 
+        ],
+        [
+            'name.required'        => 'Nama Harus Terisi',
+            'foto.required'        => 'Foto Harus Terisi',
+            'qrcode.required'      => 'QR Code Harus Terisi',
+            'deskripsi.required'   => 'Deskripsi Harus Terisi',
+            'harga.required'       => 'Harga Harus Terisi',
+            'harga_promo.required'     => 'Harga Promo Harus Terisi',
+            'category_id.required'     => 'Kategori Harus Terisi',
+            'stok.required'            => 'Stok Harus Terisi dengan angka',
+
         ]);
         $foto = $request->file('foto');
         $filename = $foto->hashName();

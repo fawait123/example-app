@@ -71,7 +71,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="product">Id Kategori:</label>
+                            <label for="product">Kategori:</label>
                             <select class="form-control category_id" id="category_id" name="category_id">
                                 @foreach ($category as $ktg)
                                     <option value="{{ $ktg['id'] }}">{{ $ktg['name'] }}</option>
