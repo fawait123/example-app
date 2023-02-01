@@ -33,12 +33,13 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->name }}</td>
-                                            <td><img src="{{ Storage::url('public/foto/').$item->foto }}" class="rounded" width="50" height="50" alt=""></td>
+                                            <td><img style="max-width 50px;
+                                                max-height:50px" src="{{ Storage::url('public/foto/').$item->foto }}" alt=""></td>
                                             <td>{!! QrCode::size(50)->generate( $item->qrcode ); !!}</td>
                                             <td>{{ $item->deskripsi }}</td>
                                             <td>{{ $item->harga }}</td>
                                             <td>{{ $item->harga_promo }}</td>
-                                            <td>{{ $item->category_id }}</td>
+                                            <td>{{ $item->category->name }}</td>
                                             <td>{{ $item->stok }}</td>
                                             <td>
                                                 <a href="{{ route('product.edit', $item->id) }}"
