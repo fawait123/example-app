@@ -34,7 +34,7 @@
             <div class="navbar-header">
 
                 <div class="d-flex align-items-left">
-                    <button type="button" class="btn btn-sm mr-2 d-lg-none px-3 font-size-16 header-item waves-effect"
+                    <button type="button" class="btn btn-sm d-lg-none font-size-16 header-item waves-effect mr-2 px-3"
                         id="vertical-menu-btn">
                         <i class="fa fa-fw fa-bars"></i>
                     </button>
@@ -193,7 +193,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-flex align-items-center justify-content-between">
-                                <h4 class="mb-0 font-size-18">{{ ucfirst(end($url)) }}</h4>
+                                <h4 class="font-size-18 mb-0">{{ ucfirst(end($url)) }}</h4>
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
