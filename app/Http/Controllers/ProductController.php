@@ -52,7 +52,7 @@ class ProductController extends Controller
         ],
         [
             'name.required'        => 'Nama Harus Terisi',
-            'foto.required'        => 'Foto Harus Terisi',
+            'foto.required'        => 'Silahkan Masukkan Foto',
             'qrcode.required'      => 'QR Code Harus Terisi',
             'deskripsi.required'   => 'Deskripsi Harus Terisi',
             'harga.required'       => 'Harga Harus Terisi',
