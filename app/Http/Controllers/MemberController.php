@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Member;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class MemberController extends Controller
@@ -14,7 +15,8 @@ class MemberController extends Controller
      */
     public function index()
     {
-        return view('pages.user.index');
+        $data = Member::with('user')->get();
+        return view('pages.user.index', compact('data'));
     }
 
     /**
@@ -24,7 +26,8 @@ class MemberController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('pages.user.form');
     }
 
     /**
@@ -35,7 +38,33 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validatedData = $request->validate(
+            [
+                "name"  => "required",
+                "telp"     => "required",
+                "gender"     => "required",
+                "email"     => "required",
+                "password"     => "required",
+                "foto"     => "required",
+                "role" => "required",
+                "password_confirmation" => "same:password"
+            ],
+            [
+                'name.required'     => 'Nama Harus Terisi',
+                'telp.required'        => 'No Telpon Harus Terisi',
+                'gender.required'       => 'Jenis Kelamin Harus Terisi',
+                'email.required'        => 'Email harus terisi',
+                'password.required'           => '',
+                'foto.required'          => 'Email sudah ada.',
+                'role.required' => 'Role Harus Terisi',
+                'password_confirmation.same' => "Password Tidak Sama"
+            ]
+        );
+        $storeUser = User::create($validatedData);
+        $storeUser->member()->create($validatedData);
+        // $storeUser->member()->save($request->all());
+        // return redirect()->route('category.index')->with(['message' => 'Category has been created']);
     }
 
     /**
@@ -57,7 +86,8 @@ class MemberController extends Controller
      */
     public function edit(Member $member)
     {
-        //
+        $id = $member->id;
+        return view('pages.user.form', compact('member', 'id'));
     }
 
     /**
@@ -69,7 +99,15 @@ class MemberController extends Controller
      */
     public function update(Request $request, Member $member)
     {
-        //
+        if ($request->get('password') == '') {
+            // $member->update($request->except('password'));
+            $member->update($request->all());
+            $member->user->update($request->except('password'));
+        } else {
+            $member->update($request->all());
+            $member->user->update($request->all());
+        }
+        return redirect()->route('member.index')->with(['message' => 'member has been updated']);
     }
 
     /**
@@ -80,6 +118,7 @@ class MemberController extends Controller
      */
     public function destroy(Member $member)
     {
-        //
+        $member->delete();
+        return redirect()->route('member.index')->with(['message' => 'User has been deleted']);
     }
 }
