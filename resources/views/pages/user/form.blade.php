@@ -82,9 +82,9 @@
                             @enderror
 
                             <label for="foto">Photo</label>
-                            <input type="text" name="foto" value="{{ isset($id) ? $member->foto : '' }}"
+                            <input type="file" name="foto" value="{{ isset($id) ? $member->foto : '' }}"
                                 class="form-control @error('gender') is-invalid @enderror">
-                            @error('photo')
+                            @error('foto')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
