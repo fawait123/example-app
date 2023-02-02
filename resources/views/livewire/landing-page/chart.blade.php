@@ -3,7 +3,7 @@
       <div class="ltn__utilize-menu-inner ltn__scrollbar">
           <div class="ltn__utilize-menu-head">
               <span class="ltn__utilize-menu-title">Cart</span>
-              <button class="ltn__utilize-close">×</button>
+              <button class="ltn__utilize-close"></button>
           </div>
           <div class="mini-cart-product-area ltn__scrollbar">
               <div class="mini-cart-item clearfix">

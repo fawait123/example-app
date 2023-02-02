@@ -41,12 +41,12 @@ class MemberController extends Controller
 
         $validatedData = $request->validate(
             [
-                "name"  => "required",
+                "name"      => "required",
                 "telp"     => "required",
                 "gender"     => "required",
                 "email"     => "required",
                 "password"     => "required",
-                "foto"     => "required",
+                'foto'           => 'required|image|mimes:jpeg,png,jpg,gif,svg',
                 "role" => "required",
                 "password_confirmation" => "same:password"
             ],
@@ -55,16 +55,20 @@ class MemberController extends Controller
                 'telp.required'        => 'No Telpon Harus Terisi',
                 'gender.required'       => 'Jenis Kelamin Harus Terisi',
                 'email.required'        => 'Email harus terisi',
-                'password.required'           => '',
-                'foto.required'          => 'Email sudah ada.',
+                'password.required'           => 'Pasword Tidak Boleh Kosong',
+                'foto.required'        => 'Silahkan Masukkan Foto',
                 'role.required' => 'Role Harus Terisi',
                 'password_confirmation.same' => "Password Tidak Sama"
             ]
         );
+        $foto = $request->file('foto');
+        $filename = $foto->hashName();
+        $validate['foto'] = $filename;
+        $foto->storeAs('public/foto', $foto->hashName());
         $storeUser = User::create($validatedData);
         $storeUser->member()->create($validatedData);
-        // $storeUser->member()->save($request->all());
-        // return redirect()->route('category.index')->with(['message' => 'Category has been created']);
+       // $storeUser->member()->save($request->all());
+        return redirect()->route('category.index')->with(['message' => 'Category has been created']);
     }
 
     /**

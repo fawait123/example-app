@@ -17,6 +17,7 @@
                                 <tr>
                                     <th width="10%">NO</th>
                                     <th>Nama</th>
+                                    <th>Foto</th>
                                     <th>Email</th>
                                     <th>Telp</th>
                                     <th>Jenis Kelamin</th>
@@ -30,6 +31,8 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->name }}</td>
+                                            <td><img style="max-width 50px;
+                                                max-height:50px" src="{{ Storage::url('public/foto/').$item->foto }}" alt=""></td>
                                             <td>{{ $item->user->email }}</td>
                                             <td>{{ $item->telp }}</td>
                                             <td>{{ $item->gender }}</td>
