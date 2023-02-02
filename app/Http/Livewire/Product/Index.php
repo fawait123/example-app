@@ -14,7 +14,7 @@ class Index extends Component
 
     public function render()
     {
-        $query = product::query();
+        $query = product::with('category');
         $query = $query->where('name','like','%'.$this->search.'%');
         $query = $query->paginate($this->limit);
         return view('livewire.product.index',compact('query'));
