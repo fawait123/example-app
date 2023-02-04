@@ -44,7 +44,7 @@ class MemberController extends Controller
                 "name"      => "required",
                 "telp"     => "required",
                 "gender"     => "required",
-                "email"     => "required",
+                "email"     => "required|unique",
                 "password"     => "required",
                 'foto'           => 'required|image|mimes:jpeg,png,jpg,gif,svg',
                 "role" => "required",
@@ -64,10 +64,11 @@ class MemberController extends Controller
         $foto = $request->file('foto');
         $filename = $foto->hashName();
         $validate['foto'] = $filename;
+        $validate['password'] = bcrypt($request->password);
         $foto->storeAs('public/foto', $foto->hashName());
         $storeUser = User::create($validatedData);
         $storeUser->member()->create($validatedData);
-       // $storeUser->member()->save($request->all());
+        // $storeUser->member()->save($request->all());
         return redirect()->route('category.index')->with(['message' => 'Category has been created']);
     }
 
