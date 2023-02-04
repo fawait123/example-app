@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <div class="product-info">
-                            <h2 class="product-title"><a href="product-details.html">{{ $item->name }}</a></h2>
+                        <h2 class="product-title"><a href="product-details.html">{{ $item->name }}</a></h2>
                             <div class="product-price">
                                 <span>@currency($item->harga)</span>
                                 <del>$21.00</del>
