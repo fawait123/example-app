@@ -6,7 +6,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ isset($id) ? route('member.update', $id) : route('member.store') }}" method="post">
+                    <form action="{{ isset($id) ? route('member.update', $id) : route('member.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @if (isset($id))
                             @method('put')
@@ -42,7 +42,7 @@
                             <label for="email">Email</label>
                             <input type="text" name="email" value="{{ isset($id) ? $member->user->email : '' }}"
                                 class="form-control @error('name') is-invalid @enderror">
-                            @error('name')
+                            @error('email')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -82,8 +82,8 @@
                             @enderror
 
                             <label for="foto">Photo</label>
-                            <input type="file" name="foto" value="{{ isset($id) ? $member->foto : '' }}"
-                                class="form-control @error('gender') is-invalid @enderror">
+                            <input type="file" name="foto" id="foto" value="{{ isset($id) ? $member->foto : '' }}"
+                                class="form-control @error('foto') is-invalid @enderror">
                             @error('foto')
                                 <div class="invalid-feedback">
                                     {{ $message }}
