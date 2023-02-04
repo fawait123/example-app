@@ -15,8 +15,7 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $data = Member::with('user')->get();
-        return view('pages.user.index', compact('data'));
+        return view('pages.user.index');
     }
 
     /**
@@ -39,6 +38,7 @@ class MemberController extends Controller
     public function store(Request $request)
     {
 
+        // dd($request);
         $validatedData = $request->validate(
             [
                 "name"      => "required",
@@ -46,7 +46,7 @@ class MemberController extends Controller
                 "gender"     => "required",
                 "email"     => "required|unique",
                 "password"     => "required",
-                'foto'           => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+                "foto"           => "required",
                 "role" => "required",
                 "password_confirmation" => "same:password"
             ],
@@ -57,6 +57,7 @@ class MemberController extends Controller
                 'email.required'        => 'Email harus terisi',
                 'password.required'           => 'Pasword Tidak Boleh Kosong',
                 'foto.required'        => 'Silahkan Masukkan Foto',
+                'foto.images'=>'masukkan foto',
                 'role.required' => 'Role Harus Terisi',
                 'password_confirmation.same' => "Password Tidak Sama"
             ]
@@ -65,11 +66,15 @@ class MemberController extends Controller
         $filename = $foto->hashName();
         $validate['foto'] = $filename;
         $validate['password'] = bcrypt($request->password);
+
         $foto->storeAs('public/foto', $foto->hashName());
         $storeUser = User::create($validatedData);
+
         $storeUser->member()->create($validatedData);
+
         // $storeUser->member()->save($request->all());
         return redirect()->route('category.index')->with(['message' => 'Category has been created']);
+
     }
 
     /**
