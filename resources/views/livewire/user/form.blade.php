@@ -3,7 +3,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <form action="{{ isset($id) ? route('member.update', $id) : route('member.store') }}" method="post">
+                <form action="{{ isset($id) ? route('member.update', $id) : route('member.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @if (isset($id))
                         @method('put')
@@ -75,7 +75,7 @@
                         @enderror
 
                         <label for="foto">Photo</label>
-                        <input type="text" name="foto" value="{{ isset($id) ? $member->gender : '' }}"
+                        <input type="file" name="foto" value="{{ isset($id) ? $member->gender : '' }}"
                             class="form-control @error('gender') is-invalid @enderror">
                         @error('photo')
                             <div class="invalid-feedback">

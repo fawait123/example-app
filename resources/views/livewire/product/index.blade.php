@@ -33,8 +33,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->name }}</td>
-                                            <td><img style="max-width 50px;
-                                                max-height:50px" src="{{ Storage::url('public/foto/').$item->foto }}" alt=""></td>
+                                            <td><img style="max-width 50px; max-height:50px" src="{{ Storage::url('public/foto/').$item->foto }}" alt=""></td>
                                             <td>{!! QrCode::size(50)->generate( $item->qrcode ); !!}</td>
                                             <td>{{ $item->deskripsi }}</td>
                                             <td>{{ $item->harga }}</td>
