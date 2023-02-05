@@ -18,6 +18,25 @@
                                 {{ $message }}
                             </div>
                         @enderror
+                        <label for="telp">telp</label>
+                        <input type="text" name="telp" value="{{ isset($id) ? $member->telp : '' }}"
+                            class="form-control @error('telp') is-invalid @enderror">
+                        @error('telp')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                        <label for="gender">Jenis Kelamin</label>
+                        <select name="gender" value="{{ isset($id) ? $member->gender : '' }}"
+                            class="form-control @error('gender') is-invalid @enderror">
+                            <option value="laki-laki">Laki-Laki</option>
+                            <option value="Perempuan">Perempuan</option>
+                        </select>
+                        @error('gender')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                         <label for="email">Email</label>
                         <input type="text" name="email" value="{{ isset($id) ? $member->email : '' }}"
                             class="form-control @error('name') is-invalid @enderror">

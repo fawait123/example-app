@@ -14,8 +14,8 @@
             <ul class="sub-menu" aria-expanded="false">
                 <li><a href="{{ route('category.index') }}">Category</a></li>
                 <li><a href="{{ route('product.index') }}">Produk</a></li>
-                <li><a href="{{ route('member.index') }}">User</a></li>
-                <li><a href="tables-datatables.html">Data Tables</a></li>
+                <li><a href="{{ route('user.index') }}">User</a></li>
+                <li><a href="{{ route('member.index') }}">Member</a></li>
             </ul>
         </li>
 

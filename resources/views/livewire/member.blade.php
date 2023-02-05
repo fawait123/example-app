@@ -16,10 +16,12 @@
                             <thead>
                                 <tr>
                                     <th width="10%">NO</th>
-                                    <th>Name</th>
+                                    <th>Nama</th>
+                                    <th>Foto</th>
                                     <th>Email</th>
+                                    <th>Telp</th>
+                                    <th>Jenis Kelamin</th>
                                     <th>Role</th>
-                                    <th>Image</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -29,27 +31,25 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->name }}</td>
-                                            <td>{{ $item->email }}</td>
+                                            <td><img src="{{ Storage::url('public/foto/') . $item->foto }}"
+                                                    alt=""></td>
+                                            <td>{{ $item->user->email }}</td>
+                                            <td>{{ $item->telp }}</td>
+                                            <td>{{ $item->gender }}</td>
                                             <td>{{ $item->role }}</td>
                                             <td>
-                                                <img class="img-thumbnail" style="width:120px"
-                                                    src="{{ Storage::url('public/foto/' . $item->foto) }}"
-                                                    alt="">
-                                            </td>
-                                            <td>
-                                                <a href="{{ route('user.edit', $item->id) }}" class="text-primary"><i
+                                                <a href="{{ route('member.edit', $item->id) }}" class="text-primary"><i
                                                         class="mdi mdi-lead-pencil"></i></a>
                                                 <a href="#" data-toggle="modal"
                                                     data-target="#exampleModal{{ $loop->iteration }}"
                                                     class="text-danger"><i class="mdi mdi-trash-can-outline"></i></a>
                                             </td>
                                         </tr>
-
                                         <div class="modal fade" id="exampleModal{{ $loop->iteration }}" tabindex="-1"
                                             role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
-                                                    <form action="{{ route('user.destroy', $item->id) }}"
+                                                    <form action="{{ route('member.destroy', $item->id) }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('delete')
@@ -79,7 +79,7 @@
                                     @endforeach
                                 @else
                                     <tr>
-                                        <td colspan="6" align="center">Not found</td>
+                                        <td colspan="8" align="center">Not found</td>
                                     </tr>
                                 @endif
                             </tbody>
