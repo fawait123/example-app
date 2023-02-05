@@ -33,16 +33,19 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->name }}</td>
-                                            <td><img style="max-width 50px; max-height:50px" src="{{ Storage::url('public/foto/').$item->foto }}" alt=""></td>
-                                            <td>{!! QrCode::size(50)->generate( $item->qrcode ); !!}</td>
+                                            <td><img style="max-width 50px; max-height:50px"
+                                                    src="{{ Storage::url('public/foto/') . $item->foto }}"
+                                                    alt="">
+                                            </td>
+                                            <td>{!! QrCode::size(50)->generate($item->qrcode) !!}</td>
                                             <td>{{ $item->deskripsi }}</td>
                                             <td>{{ $item->harga }}</td>
                                             <td>{{ $item->harga_promo }}</td>
                                             <td>{{ $item->category->name }}</td>
                                             <td>{{ $item->stok }}</td>
                                             <td>
-                                                <a href="{{ route('product.edit', $item->id) }}"
-                                                    class="text-primary"><i class="mdi mdi-lead-pencil"></i></a>
+                                                <a href="{{ route('product.edit', $item->id) }}" class="text-primary"><i
+                                                        class="mdi mdi-lead-pencil"></i></a>
                                                 <a href="#" data-toggle="modal"
                                                     data-target="#exampleModal{{ $loop->iteration }}"
                                                     class="text-danger"><i class="mdi mdi-trash-can-outline"></i></a>
@@ -84,7 +87,7 @@
                                     @endforeach
                                 @else
                                     <tr>
-                                        <td colspan="3" align="center">Not found</td>
+                                        <td colspan="10" align="center">Not found</td>
                                     </tr>
                                 @endif
                             </tbody>
